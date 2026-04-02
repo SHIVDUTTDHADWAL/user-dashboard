@@ -99,18 +99,33 @@ export default function Home() {
     setMenuOpen(null);
   }, [search]);
 
-  const handleSubmit = (data) => {
-    const newUser = {
-      id: String(Date.now()),
-      ...data,
-    };
+const handleSubmit = (data) => {
+  // Normalize input
+  const email = data.email?.toLowerCase().trim();
+  const phone = data.phone?.trim();
 
-    setUsers((prev) => [newUser, ...prev]);
-    setShowForm(false);
-    setMenuOpen(null);
-    setPage(1);
+  // 🔍 Check duplicates
+  const exists = users.some(
+    (u) =>
+      u.email?.toLowerCase() === email ||
+      u.phone === phone
+  );
+
+  if (exists) {
+    alert("User with same email or phone already exists ❌");
+    return;
+  }
+
+  const newUser = {
+    id: Date.now(),
+    ...data,
   };
 
+  const updated = [newUser, ...users];
+
+  setUsers(updated);
+  localStorage.setItem("users", JSON.stringify(updated));
+};
   const handleDelete = (id) => {
     setUsers((prev) => prev.filter((user) => String(user.id) !== String(id)));
     setMenuOpen(null);
