@@ -1,0 +1,43 @@
+.container {
+  max-width: 800px;
+  margin: auto;
+  text-align: center;
+  font-family: Arial;
+}
+
+.search {
+  padding: 10px;
+  width: 60%;
+  margin: 10px;
+}
+
+.form input {
+  padding: 8px;
+  margin: 5px;
+}
+
+.form button {
+  padding: 8px 15px;
+  cursor: pointer;
+}
+
+.list {
+  margin-top: 20px;
+}
+
+.card {
+  border: 1px solid #ddd;
+  padding: 15px;
+  margin: 10px;
+  border-radius: 10px;
+}
+
+.card button {
+  margin-top: 10px;
+  padding: 5px 10px;
+}
+
+.no-result {
+  color: red;
+  font-weight: bold;
+}
